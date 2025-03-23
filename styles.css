@@ -1,0 +1,33 @@
+
+body{
+font-family: arial;
+text-align:center;
+background-color: aquamarine;
+}
+#bannerDiv{
+background-color: cadetblue;
+height: 50px;
+display: flex;
+vertical-align: middle;
+}
+#imghp{
+width: 52px;
+}
+#text{
+display: inline-block;
+}
+a{
+color: black;
+text-decoration: none;
+}
+#bb{
+    width: 300px;
+    height: 160px;
+    font-size: 25px;
+    font-family: sans-serif;
+    color: black;
+    background-color: gainsboro;
+  }
+  #text{
+    display: inline-block;
+  }

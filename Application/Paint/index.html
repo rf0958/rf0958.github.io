@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Paint</title>
+</head>
+
+<body>
+  <h1> Whiteboard </h1>
+  <canvas id = "art"></canvas>
+  <br/><br/>
+  <button id = "clear"> CLEAR </button>
+  <button id = "sizeUp">+</button>
+  <button id = "sizeDown">-</button>
+  <br/>
+  <br/>
+  <div class = "all" style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+    <div align = "center" class = "colorOption" id = "red"></div>
+    &nbsp;
+    <div align = "center" class = "colorOption" id = "orange"></div> &nbsp;
+    <div align = "center" class = "colorOption" id = "yellow"></div> &nbsp;
+    <div align = "center" class = "colorOption" id = "green"></div> &nbsp;
+    <div align = "center" class = "colorOption" id = "blue"></div> &nbsp;
+    <div align = "center" class = "colorOption" id = "purple"></div> &nbsp;
+    <div align = "center" class = "colorOption" id = "pink"></div> &NonBreakingSpace;
+    <div align = "center" class = "colorOption" id = "black"></div>
+  </div>
+
+  <style type="text/css">
+    body{
+      background-color: lightgrey;
+      text-align: center;
+      font-family: sans-serif;
+    }
+    .all{
+      margin: auto;
+      justify-content:center ;
+      display: flex;
+      text-align: center;
+      border: 2px solid black;
+      padding: 5px;
+      width: 200px
+      
+    }
+    canvas{
+      background-color: white;
+      border-style: solid;
+    }
+    /* button{
+      background-color: #4CAF50;
+    } */
+    .colorOption{
+      width: 20px;
+      height: 20px;
+      float: left;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: .5px solid black;
+    }
+    #red{
+      background-color: red;
+    }
+    #orange{
+      background-color: orange;
+    }
+    #yellow{
+      background-color: yellow;
+    }
+    #green{
+      background-color: green;
+    }
+    #blue{
+      background-color: blue;
+    }
+    #purple{
+      background-color: purple;
+    }
+    #pink{
+      background-color: pink;
+    }
+    #black{
+      background-color: black;
+    }
+
+  </style>
+  <script>
+    var canvas = document.getElementById("art");
+    var btn = document.getElementById("clear");
+    var context = canvas.getContext("2d");
+    var isdrawing = false;
+    canvas.width = 500;
+    canvas.height = 300;
+    context.strokeStyle = "red";
+    context.linecap = "round";
+    context.linewidth = 5;
+    ///
+    canvas.onmousedown = function(e){
+      isdrawing = true;
+      context.beginPath();
+      context.moveTo(e.pageX- this.offsetLeft,
+      e.pageY- this.offsetTop);
+    }
+    canvas.onmousemove = function(e){
+      if (isdrawing){
+        context.lineTo(e.pageX- this.offsetLeft,
+        e.pageY- this.offsetTop)
+        context.stroke();
+      }
+    }
+    canvas.onmouseup = function(){
+      isdrawing = false;
+      context.closePath()
+    }
+    btn.onclick = function(){
+      context.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    var up = document.getElementById("sizeUp");
+    var down = document.getElementById("sizeDown");
+    up.onclick = function(){
+      context.linewidth++;
+    }
+    down.onclick = function(){
+      if (context.linewidth > 1){
+        context.linewidth--;
+      }
+    }
+    var blueButton = document.getElementById("blue")
+    var redButton = document.getElementById("red")
+    var greenButton = document.getElementById("green")
+    var purpleButton = document.getElementById("purple")
+    var orangeButton = document.getElementById("orange")
+    var yellowButton = document.getElementById("yellow")
+    var blackButton = document.getElementById("black")
+    var pinkButton = document.getElementById("pink")
+    // onclick fun - when we clicked the blue it will
+    // activate the color blue to the canvas
+    blue.onclick = function(){
+      context.strokeStyle= "blue";
+    }
+
+    red.onclick = function(){
+      context.strokeStyle= "red";
+    }
+
+    green.onclick = function(){
+      context.strokeStyle= "green";
+    }
+    purple.onclick = function(){
+      context.strokeStyle = "purple";
+    }
+    pink.onclick = function(){
+      context.strokeStyle= "pink";
+    }
+
+    orange.onclick = function(){
+      context.strokeStyle= "orange";
+    }
+
+    yellow.onclick = function(){
+      context.strokeStyle= "yellow";
+    }
+    black.onclick = function(){
+      context.strokeStyle = "black";
+    }
+  </script>
+</body>
+
+</html>
